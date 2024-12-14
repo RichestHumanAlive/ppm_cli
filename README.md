@@ -14,7 +14,7 @@ A platform-agnostic CLI tool that unifies package management across multiple pac
 ## Installation
 
 ```bash
-go install github.com/yourusername/ppm@latest
+go install github.com/RichestHumanAlive/ppm_cli@latest
 ```
 
 ## Usage
@@ -43,7 +43,7 @@ ppm remove <package-name>
 ### Building from source
 
 ```bash
-git clone https://github.com/yourusername/ppm.git
+git clone https://github.com/RichestHumanAlive/ppm_cli.git
 cd ppm
 go build
 ```

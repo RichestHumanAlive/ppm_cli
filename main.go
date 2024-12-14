@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/yourusername/ppm/cmd"
+	"github.com/RichestHumanAlive/ppm_cli/cmd"
 	"github.com/spf13/cobra"
 )
 

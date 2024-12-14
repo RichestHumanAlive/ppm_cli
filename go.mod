@@ -1,4 +1,4 @@
-module github.com/yourusername/ppm
+module github.com/RichestHumanAlive/ppm_cli
 
 go 1.23.3
 
