@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/spf13/cobra"
 	"github.com/yourusername/ppm/cmd"
+	"github.com/spf13/cobra"
 )
 
 func main() {
@@ -26,6 +26,9 @@ multiple package managers like npm, pip, scoop, and winget.`,
 	// Add commands
 	rootCmd.AddCommand(
 		cmd.NewInstallCmd(),
+		// cmd.NewSearchCmd(),
+		// cmd.NewUpdateCmd(),
+		// cmd.NewRemoveCmd(),
 	)
 
 	return rootCmd.Execute()
