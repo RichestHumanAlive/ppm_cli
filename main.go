@@ -19,16 +19,14 @@ func execute() error {
 	rootCmd := &cobra.Command{
 		Use:   "ppm",
 		Short: "Panoramic Package Manager - A unified package management CLI",
-		Long: `PPM is a platform-agnostic CLI tool that unifies package management across 
-multiple package managers like npm, pip, scoop, and winget.`,
+		Long: `PPM is a platform-agnostic CLI tool designed to unify the workflows of multiple package managers.
+It supports npm, pip, and scoop, providing a consistent interface for managing packages across different ecosystems.`,
 	}
 
 	// Add commands
 	rootCmd.AddCommand(
 		cmd.NewInstallCmd(),
-		// cmd.NewSearchCmd(),
-		// cmd.NewUpdateCmd(),
-		// cmd.NewRemoveCmd(),
+		cmd.NewSearchCmd(),
 	)
 
 	return rootCmd.Execute()
