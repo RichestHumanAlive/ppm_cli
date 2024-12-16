@@ -16,14 +16,22 @@ type PackageManager interface {
 	
 	// IsAvailable checks if this package manager is available on the system
 	IsAvailable() bool
+	
+	// GetName returns the name of the package manager
+	GetName() string
 }
 
 // Package represents a package in any package manager
 type Package struct {
-	Name        string
-	Version     string
-	Description string
-	Source      string // Which package manager this package is from
+	Name        string  // Package name
+	Version     string  // Latest version
+	Description string  // Package description
+	Author      string  // Package author/maintainer
+	Provider    string  // Package manager (npm, pip, scoop)
+	Score      float64 // Relevance score (0-1)
+	Downloads  int64   // Number of downloads (if available)
+	Homepage   string  // Package homepage URL
+	Repository string  // Source code repository URL
 }
 
 // Manager handles operations across multiple package managers
@@ -40,7 +48,30 @@ func New() *Manager {
 
 // RegisterManager adds a package manager to the handler
 func (m *Manager) RegisterManager(pm PackageManager) {
-	if pm.IsAvailable() {
-		m.managers = append(m.managers, pm)
+	m.managers = append(m.managers, pm)
+}
+
+// GetManagers returns the list of registered package managers
+func (m *Manager) GetManagers() []PackageManager {
+	return m.managers
+}
+
+// SearchAcrossAll searches for packages across all available package managers
+func (m *Manager) SearchAcrossAll(query string) ([]Package, error) {
+	results := make([]Package, 0)
+	
+	for _, pm := range m.managers {
+		if !pm.IsAvailable() {
+			continue
+		}
+		
+		pkgs, err := pm.Search(query)
+		if err != nil {
+			// Log error but continue with other package managers
+			continue
+		}
+		results = append(results, pkgs...)
 	}
+	
+	return results, nil
 }
