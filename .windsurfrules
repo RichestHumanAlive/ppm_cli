@@ -62,6 +62,7 @@ The Panoramic Package Manager (PPM) is a platform-agnostic CLI tool designed to 
 
 - **Cobra**: For building the CLI commands and subcommands.
 - **Gum**: For enhanced user interaction with spinners, progress bars, and prompts.
+    Make sure you use gum for UI everywhere it is possible, we will define our UI components module built on top of gum and will call those component every single time they can substitute standard cli Ui components
 - **Native Go Libraries**: For handling OS-level operations and subprocess management.
 
 ---
